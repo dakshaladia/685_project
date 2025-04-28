@@ -1,9 +1,10 @@
+```python
 import os
 import openai
 import pandas as pd
 import argparse
 
-# --- (Re-use these from your existing script) ---
+# --- reuse these mappings/templates ---
 MODEL_CHOICES = {
     '1': 'meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo',
     '2': 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
@@ -30,7 +31,7 @@ PROMPT_TEMPLATES = {
 
 def fill_placeholders(template: str, values: dict) -> str:
     for key, val in values.items():
-        template = template.replace(f'[{key}]', val)
+        template = template.replace(f'[{key}]', str(val))
     return template
 
 def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str:
@@ -39,40 +40,41 @@ def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str
     resp = openai.ChatCompletion.create(
         model=model_id,
         messages=[
-            {'role': 'system', 'content': 'You are a helpful assistant.'},
-            {'role': 'user',   'content': prompt}
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user",   "content": prompt}
         ]
     )
     return resp.choices[0].message.content
 
-# --- New automation for Excel sheets ---
-def process_excel(file_path: str, model_choice: str, prompt_choice: str, job_description: str):
+def process_excel(file_path: str, model_choice: str, prompt_choice: str):
     df = pd.read_excel(file_path)
-    # Build responses
+
     def row_to_response(row):
+        # read job description from the sheet
+        job_desc = row['job_description']
         if prompt_choice == '1':
             placeholders = {
-                'NAME_1': row['name_1'],
-                'PRONOUNS_1': row['pronoun_1'],
-                'NAME_2': row['name_2'],
-                'PRONOUNS_2': row['pronoun_2'],
-                'JOB_DESCRIPTION': job_description
+                'NAME_1':       row['name_1'],
+                'PRONOUNS_1':   row['pronoun_1'],
+                'NAME_2':       row['name_2'],
+                'PRONOUNS_2':   row['pronoun_2'],
+                'JOB_DESCRIPTION': job_desc
             }
-        else:  # prompt 2
+        else:
             placeholders = {
-                'NAME': row['name'],              # assumes a 'name' column
-                'JOB_DESCRIPTION': job_description
+                'NAME':            row['name'],
+                'JOB_DESCRIPTION': job_desc
             }
         return call_model(model_choice, prompt_choice, placeholders)
 
     df['response'] = df.apply(row_to_response, axis=1)
     out_path = f"output_{os.path.basename(file_path)}"
     df.to_excel(out_path, index=False)
-    print(f"✔️  Wrote responses to {out_path}")
+    print(f"Wrote responses to {out_path}")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description="Batch-run prompts over Excel sheets"
+        description="Batch-run prompts over Excel sheets (sheet must include a 'job_description' column)"
     )
     parser.add_argument('excel_files', nargs='+',
                         help="Paths to one or more .xlsx files")
@@ -80,11 +82,10 @@ if __name__ == '__main__':
                         help="1: Llama-3.1 | 2: Llama-3.3 | 3: Gemma-2")
     parser.add_argument('--prompt-choice', choices=['1','2'], required=True,
                         help="1: Tie-breaker | 2: Ranking")
-    parser.add_argument('--job-description', required=True,
-                        help="Job title to inject into prompts")
-    args = parser.parse_args()
 
+    args = parser.parse_args()
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     for fp in args.excel_files:
-        process_excel(fp, args.model_choice, args.prompt_choice, args.job_description)
+        process_excel(fp, args.model_choice, args.prompt_choice)
+```
