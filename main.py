@@ -1,10 +1,9 @@
-```python
+
 import os
 import openai
 import pandas as pd
 import argparse
 
-# --- reuse these mappings/templates ---
 MODEL_CHOICES = {
     '1': 'meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo',
     '2': 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
@@ -74,7 +73,7 @@ def process_excel(file_path: str, model_choice: str, prompt_choice: str):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description="Batch-run prompts over Excel sheets (sheet must include a 'job_description' column)"
+        description = "Batch-run prompts over Excel sheets (sheet must include a 'job_description' column)"
     )
     parser.add_argument('excel_files', nargs='+',
                         help="Paths to one or more .xlsx files")
@@ -88,4 +87,4 @@ if __name__ == '__main__':
 
     for fp in args.excel_files:
         process_excel(fp, args.model_choice, args.prompt_choice)
-```
+]
