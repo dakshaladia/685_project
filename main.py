@@ -50,7 +50,6 @@ def process_excel(file_path: str, model_choice: str, prompt_choice: str):
 
     def row_to_response(row):
         # read job description from the sheet
-        job_desc = row['job_description']
         if prompt_choice == '1':
             placeholders = {
                 'NAME_1':       row['name_1'],
