@@ -34,15 +34,28 @@ def fill_placeholders(template: str, values: dict) -> str:
     return template
 
 def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str:
+
     model_id = MODEL_CHOICES[model_choice]
     prompt = fill_placeholders(PROMPT_TEMPLATES[prompt_choice], placeholders)
-    resp = openai.ChatCompletion.create(
-        model=model_id,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user",   "content": prompt}
-        ]
-    )
+
+    if model_choice ==1 or model_choice ==2:
+        # todo: change the below with llama api calls
+        resp = openai.ChatCompletion.create(
+            model=model_id,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user",   "content": prompt}
+            ]
+        )
+    if model_choice ==3:
+        # todo: change the below with gemma api calls
+        resp = openai.ChatCompletion.create(
+            model=model_id,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user",   "content": prompt}
+            ]
+        )
     return resp.choices[0].message.content
 
 def process_excel(file_path: str, model_choice: str, prompt_choice: str):
@@ -82,7 +95,8 @@ if __name__ == '__main__':
                         help="1: Tie-breaker | 2: Ranking")
 
     args = parser.parse_args()
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    llama_api_key = "LLAMA_API_KEY"
+    gemma_api_key = "GEMMA_API_KEY"
 
     for fp in args.excel_files:
         process_excel(fp, args.model_choice, args.prompt_choice)
