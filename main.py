@@ -58,12 +58,12 @@ def process_excel(file_path: str, model_choice: str, prompt_choice: str):
                 'PRONOUNS_1':   row['pronoun_1'],
                 'NAME_2':       row['name_2'],
                 'PRONOUNS_2':   row['pronoun_2'],
-                'JOB_DESCRIPTION': job_desc
+                'JOB_DESCRIPTION': row['job_desc']
             }
         else:
             placeholders = {
                 'NAME':            row['name'],
-                'JOB_DESCRIPTION': job_desc
+                'JOB_DESCRIPTION': row['job_desc']
             }
         return call_model(model_choice, prompt_choice, placeholders)
 
