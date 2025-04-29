@@ -36,9 +36,6 @@ PROMPT_TEMPLATES = {
     )
 }
 
-# Initialize the SDK
-llama = LlamaAPI("<your_api_token>")
-
 def fill_placeholders(template: str, values: dict) -> str:
     for key, val in values.items():
         template = template.replace(f'[{key}]', str(val))
