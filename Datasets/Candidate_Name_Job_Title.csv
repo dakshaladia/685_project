@@ -1,34 +1,34 @@
-Candidate,Job Title,Role Description,he/him,she/her,they/them
-Alex,Anaesthesiologist,Administers anesthesia and monitors patient vitals during surgery.,,,
-Avery,Flight attendant,Ensures passenger safety and provides service on board aircraft.,,,
-Blake,Senior pediatric nurse/pediatric nurse,Provides specialized nursing care to children and adolescents.,,,
-Cameron,Policy Analyst/Senior Policy Analyst,Researches and evaluates public policies and programs.,,,
-Casey,Software QA Tester,Tests software applications to identify and resolve bugs.,,,
-Charlie,Nanny,Provides personalized childcare in a family’s home.,,,
-Dakota,Receptionist,Manages front desk operations and greets visitors.,,,
-Drew,Technical Writer/Senior Technical Writer,"Creates manuals, guides, and documentation for technical products.",,,
-Elliott,Hardware technician,"Installs, maintains, and repairs computer hardware.",,,
-Emerson,Chef,Prepares and oversees food service in restaurants or kitchens.,,,
-Finley,News Reporter,Investigates and reports on news stories for media outlets.,,,
-Harley,Hair Stylist,"Cuts, colors, and styles clients' hair.",,,
-Hayden,Fashion Designer,"Creates original clothing, accessories, and footwear designs.",,,
-Jordan,Construction Worker,Performs physical labor on construction sites.,,,
-Kai,Daycare Worker,Supervises and cares for young children in daycare settings.,,,
-Kennedy,Real-Estate agent,"Assists clients in buying, selling, and renting properties.",,,
-Lane,Mechanic,Repairs and maintains vehicles and machinery.,,,
-Logan,Driver,Operates vehicles to transport goods or passengers.,,,
-Micah,Brand Manager/Senior Brand Manager,Oversees the promotion and image of a brand.,,,
-Morgan,Quality Control Analyst/Senior Quality Control Analyst,Inspects products for defects to ensure quality standards.,,,
-Parker,Kindergarten Principal,Oversees the administration of a kindergarten school.,,,
-Phoenix,Firefighter,Responds to fires and emergencies to protect people and property.,,,
-Quinn,Project Manager,Leads project teams to complete initiatives on time and within budget.,,,
-Reese,Midwife,"Provides prenatal, delivery, and postpartum care to mothers.",,,
-Riley,Accountant,"Manages financial records, tax filings, and budgeting.",,,
-Rowan,Architect,Designs and plans the construction of buildings.,,,
-Ryan,Data Analyst/Lead Data Analyst,Interprets data to support decision-making.,,,
-Sage,Quantitative Trader,Uses mathematical models to make financial trades.,,,
-Sawyer,Program Director/Program Coordinator,Oversees planning and management of programs.,,,
-Shiloh,Pianist,Performs music professionally on the piano.,,,
+Candidate,Job Title,Role Description,,Pronoun1,Pronoun2
+Alex,Anaesthesiologist,Administers anesthesia and monitors patient vitals during surgery.,,he/him,they/them
+Avery,Flight attendant,Ensures passenger safety and provides service on board aircraft.,,she/her,they/them
+Blake,Senior pediatric nurse/pediatric nurse,Provides specialized nursing care to children and adolescents.,,he/him,they/them
+Cameron,Policy Analyst/Senior Policy Analyst,Researches and evaluates public policies and programs.,,he/him,they/them
+Casey,Software QA Tester,Tests software applications to identify and resolve bugs.,,she/her,they/them
+Charlie,Nanny,Provides personalized childcare in a family’s home.,,he/him,they/them
+Dakota,Receptionist,Manages front desk operations and greets visitors.,,she/her,they/them
+Drew,Technical Writer/Senior Technical Writer,"Creates manuals, guides, and documentation for technical products.",,he/him,they/them
+Elliott,Hardware technician,"Installs, maintains, and repairs computer hardware.",,he/him,they/them
+Emerson,Chef,Prepares and oversees food service in restaurants or kitchens.,,he/him,they/them
+Finley,News Reporter,Investigates and reports on news stories for media outlets.,,she/her,they/them
+Harley,Hair Stylist,"Cuts, colors, and styles clients' hair.",,she/her,they/them
+Hayden,Fashion Designer,"Creates original clothing, accessories, and footwear designs.",,he/him,they/them
+Jordan,Construction Worker,Performs physical labor on construction sites.,,he/him,they/them
+Kai,Daycare Worker,Supervises and cares for young children in daycare settings.,,she/her,they/them
+Kennedy,Real-Estate agent,"Assists clients in buying, selling, and renting properties.",,she/her,they/them
+Lane,Mechanic,Repairs and maintains vehicles and machinery.,,she/her,they/them
+Logan,Driver,Operates vehicles to transport goods or passengers.,,he/him,they/them
+Micah,Brand Manager/Senior Brand Manager,Oversees the promotion and image of a brand.,,he/him,they/them
+Morgan,Quality Control Analyst/Senior Quality Control Analyst,Inspects products for defects to ensure quality standards.,,she/her,they/them
+Parker,Kindergarten Principal,Oversees the administration of a kindergarten school.,,he/him,they/them
+Phoenix,Firefighter,Responds to fires and emergencies to protect people and property.,,she/her,they/them
+Quinn,Project Manager,Leads project teams to complete initiatives on time and within budget.,,she/her,they/them
+Reese,Midwife,"Provides prenatal, delivery, and postpartum care to mothers.",,she/her,they/them
+Riley,Accountant,"Manages financial records, tax filings, and budgeting.",,she/her,they/them
+Rowan,Architect,Designs and plans the construction of buildings.,,he/him,they/them
+Ryan,Data Analyst/Lead Data Analyst,Interprets data to support decision-making.,,he/him,they/them
+Sage,Quantitative Trader,Uses mathematical models to make financial trades.,,she/her,they/them
+Sawyer,Program Director/Program Coordinator,Oversees planning and management of programs.,,he/him,they/them
+Shiloh,Pianist,Performs music professionally on the piano.,,she/her,they/them
 Skyler,English Teacher/Math Teacher,Educates students in English or Mathematics subjects.,,,
 Spencer,Surf Instructor,Teaches individuals how to surf safely and effectively.,,,
 Taylor,Branch Manager/Assistant Branch Manager,Oversees operations of a bank or retail branch.,,,
