@@ -65,11 +65,11 @@ def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str
 
         # Make sure you have set your HF token in the HF_API_TOKEN env var:
         #    export HF_API_TOKEN="hf_…"
-        HF_TOKEN = "abc"
+        HF_TOKEN = "hf_"
        
 
         # API_URL = "https://api-inference.huggingface.co/models/allenai/Llama-3.1-Tulu-3.1-8B"allenai/tulu-2-7b
-        API_URL = "https://api-inference.huggingface.co/models/allenai/allenai/tulu-2-7b"
+        API_URL = "https://api-inference.huggingface.co/models/allenai/allenai/Llama-3.1-Tulu-3-8B-SFT"
 
         # HF_TOKEN = os.getenv("HF_API_TOKEN")
         if not HF_TOKEN:
