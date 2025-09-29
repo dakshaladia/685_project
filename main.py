@@ -18,7 +18,9 @@ MODEL_CHOICES = {
     '1': 'llama3.1-70b',
     '2': 'llama3.3-70b',
     '4': 'google/gemma-2-27b-it',
-    '3': 'gpt-4o'
+    '3': 'gpt-4o',
+    '5': 'gpt-5',
+    '6': 'gpt-5-nano'
 }
 
 PROMPT_TEMPLATES = {
@@ -75,7 +77,7 @@ def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str
         )
         return chat_completion.choices[0].message.content
     
-    elif model_choice == '3':
+    elif model_choice in ('3', '5', '6'):
         response = openai_client.responses.parse(
             model = model_id,
             input = [
@@ -90,7 +92,7 @@ def call_model(model_choice: str, prompt_choice: str, placeholders: dict) -> str
         raise ValueError(f"Invalid model choice: {model_choice}")
 
 def process_dataset(file_path: str, model_choice: str, prompt_choice: str):
-    df = pd.read_csv(file_path, nrows = 30, encoding="cp1252")
+    df = pd.read_csv(file_path, nrows = 15, encoding="cp1252")
 
     def row_to_response(row):
         if prompt_choice == '1':
@@ -111,13 +113,13 @@ def process_dataset(file_path: str, model_choice: str, prompt_choice: str):
     for t in range(1, 11):
         col = f"trial_{t}"
         print(f"Running trial #{t}…")
-        
+        print(df.columns)
         df[col] = df.apply(
         lambda row: call_model(model_choice, prompt_choice, row_to_response(row)).pronouns,
         axis=1
         )
 
-    out_path = f"output_{os.path.basename(file_path)}"
+    out_path = f"poc_output_positions_flipped_{os.path.basename(file_path)}"
     df.to_csv(out_path, index=False)
     print(f"Wrote responses to {out_path}")
 
@@ -127,8 +129,8 @@ if __name__ == '__main__':
     )
     parser.add_argument('excel_files', nargs='+',
                         help="Paths to one or more .xlsx files")
-    parser.add_argument('--model-choice', choices=['1','2','3'], required=True,
-                        help="1: Llama-3.1 | 2: Llama-3.3 | 3: Gemma-2")
+    parser.add_argument('--model-choice', choices=['1','2','3','4','5', '6'], required=True,
+                        help="1: Llama-3.1 | 2: Llama-3.3 | 3: GPT-4o | 4: Gemma-2 | 5: GPT-5 | 6: GPT-5-Nano")
     parser.add_argument('--prompt-choice', choices=['1','2'], required=True,
                         help="1: Tie-breaker | 2: Ranking")
 
