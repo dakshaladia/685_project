@@ -1,4 +1,4 @@
-# 685_project
+# Pronoun Based Bias In LLMs
 The file takes 3 inputs: path to input excel file which contains the data, the model type and the prompt type <br>
 [check the code for definitions of them] <br>
 The main.py file contains: <br>
